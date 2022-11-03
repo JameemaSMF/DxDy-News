@@ -9,6 +9,20 @@
     <!-- Google Tag Manager (noscript) -->
     <!-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
     <!-- End Google Tag Manager (noscript) -->
+    {% block header %}
+    <div class="wrapper">
+            {% if custom_logo_url %}
+                    <a class="hdr-logo-link" href="{{site.link}}" rel="home">
+                        <img src="{{custom_logo_url}}" alt="{{site.name}}"/>
+                    </a>
+            {% else %}
+                <h1 class="hdr-logo" role="banner">
+                    <a class="hdr-logo-link" href="{{site.link}}" rel="home">{{site.name}}</a>
+                </h1>
+            {% endif %} 
+       {% include "components/header.twig" with { 'nav-menu' : nav_menu.get_items } %}
+        </div>
+    {% endblock %}
 
     {% include 'icon-sprite.twig' %}
 
@@ -22,7 +36,7 @@
 
       {% block footer %}
         <footer>
-          {% include 'footer.twig' %}
+          {% include 'components/footer.twig' %}
         </footer>
       {% endblock %}
     </div>

@@ -1,0 +1,17 @@
+<div class="header">
+    <header class="header">
+        <ul class="header__nav">
+            {% block header %}
+                {% for item in nav_menu.get_items %}
+                    <li>
+                    <a href="{{ item.link }}">{{ item.title }}</a>
+                    </li>
+                {% endfor %}
+            {% endblock %}
+        </ul>
+        </div>
+    </div>
+    </header>
+</div>
+
+<br><br>

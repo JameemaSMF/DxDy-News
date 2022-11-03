@@ -59,7 +59,7 @@ class DxDySite extends TimberSite
         $context['site'] = $this;
         $context['options'] = get_fields('options');
         $context['footer_widgets'] = Timber::get_widgets('footer_widgets');
-
+        
         return $context;
     }
 
@@ -72,6 +72,69 @@ class DxDySite extends TimberSite
 
         return $twig;
     }
+
+    public function theme_supports() {
+		// Add default posts and comments RSS feed links to head.
+		add_theme_support( 'automatic-feed-links' );
+
+		/*
+		 * Let WordPress manage the document title.
+		 * By adding theme support, we declare that this theme does not use a
+		 * hard-coded <title> tag in the document head, and expect WordPress to
+		 * provide it for us.
+		 */
+		add_theme_support( 'title-tag' );
+
+		/*
+		 * Enable support for Post Thumbnails on posts and pages.
+		 *
+		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+		 */
+		add_theme_support( 'post-thumbnails' );
+
+		/*
+		 * Switch default core markup for search form, comment form, and comments
+		 * to output valid HTML5.
+		 */
+		add_theme_support(
+			'html5',
+			array(
+				'comment-form',
+				'comment-list',
+				'gallery',
+				'caption',
+			)
+		);
+
+		/*
+		 * Enable support for Post Formats.
+		 *
+		 * See: https://codex.wordpress.org/Post_Formats
+		 */
+		add_theme_support(
+			'post-formats',
+			array(
+				'aside',
+				'image',
+				'video',
+				'quote',
+				'link',
+				'gallery',
+				'audio',
+			)
+		);
+
+		add_theme_support( 'menus' );
+
+		$defaults = array(
+			'height' 	  => 100, 
+			'width' 	  => 250, 
+			'flex-height' => false, 
+			'flex-width'  => false, 
+			'unlink-homepage-logo' => true,
+		);
+		add_theme_support( 'custom-logo' , $defaults );
+	}
 
     public function addStylesAndScripts()
     {
@@ -99,12 +162,12 @@ class DxDySite extends TimberSite
 
     public function addMenus()
     {
-        // register_nav_menus([
-        //   'nav-menu' => __('Header Navbar'),
-        //   'footer-menu-left' => __('Footer Left'),
-        //   'footer-menu-center' => __('Footer Center'),
-        //   'footer-menu-right' => __('Footer Right'),
-        // ]);
+        register_nav_menus([
+          'nav-menu' => __('Header Navbar'),
+          'footer-menu-left' => __('Footer Left'),
+          'footer-menu-center' => __('Footer Center'),
+          'footer-menu-right' => __('Footer Right'),
+        ]);
     }
 
     // remove default WYSIWYG for posts and pages
@@ -136,6 +199,20 @@ if( function_exists('acf_add_options_page') ) {
     'redirect'    => false
   ]);
 
+  acf_add_options_sub_page([
+    'page_title'  => 'Header',
+    'menu_title'  => 'Header',
+    'menu_slug'   => 'nav-settings',
+    'parent_slug' => 'global-settings',
+  ]);
+
+  acf_add_options_sub_page([
+    'page_title'  => 'Footer',
+    'menu_title'  => 'Footer',
+    'menu_slug'   => 'footer-settings',
+    'parent_slug' => 'global-settings',
+  ]);
+
   // acf_add_options_sub_page([
   //   'page_title'  => 'Header and Footer',
   //   'menu_title'  => 'Header and Footer',
@@ -143,3 +220,4 @@ if( function_exists('acf_add_options_page') ) {
   //   'parent_slug' => 'global-settings',
   // ]);
 }
+
