@@ -1,0 +1,75 @@
+{
+    "key": "group_636212bacd406",
+    "title": "landing-page",
+    "fields": [
+        {
+            "key": "field_636212ef837ae",
+            "label": "landing-page",
+            "name": "landing-page",
+            "type": "flexible_content",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layouts": {
+                "layout_6362130744ad7": {
+                    "key": "layout_6362130744ad7",
+                    "name": "landing-page",
+                    "label": "landing-page",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_63621313837af",
+                            "label": "landing-page",
+                            "name": "landing-page",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_63620e0db56a5"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            },
+            "button_label": "Add Row",
+            "min": "",
+            "max": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "landing-page.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1667380123
+}
